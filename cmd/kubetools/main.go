@@ -4,7 +4,6 @@ import (
 	"context"
 	"flag"
 	"fmt"
-	"log"
 	"path/filepath"
 
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -40,7 +39,6 @@ func main() {
 	if err != nil {
 		panic(err.Error())
 	}
-	fmt.Printf("There are %d pods in the cluster\n", len(pods.Items))
 
 	imageids := map[string]int{}
 	for _, pod := range pods.Items {
@@ -50,6 +48,6 @@ func main() {
 	}
 
 	for imageid := range imageids {
-		log.Printf("%s", imageid)
+		fmt.Printf("%s\n", imageid)
 	}
 }
